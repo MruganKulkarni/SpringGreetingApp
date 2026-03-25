@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.*;
 import com.bridgelabz.greetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.bridgelabz.greetingapp.repository.GreetingRepository;
+import com.bridgelabz.greetingapp.model.Greeting;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -13,6 +16,8 @@ public class GreetingController {
 
     @Autowired
     private GreetingService greetingService;
+    @Autowired
+    private GreetingRepository repository;
 
     @GetMapping
     public String getGreeting() {
@@ -45,5 +50,9 @@ public class GreetingController {
             @RequestParam(required = false) String lastName) {
 
         return greetingService.getGreeting(firstName, lastName);
+    }
+    @PostMapping("/save")
+    public Greeting saveGreeting(@RequestBody Greeting greeting) {
+        return repository.save(greeting);
     }
 }
