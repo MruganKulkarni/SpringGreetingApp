@@ -70,4 +70,9 @@ public class GreetingController {
                                    @RequestBody Greeting greeting) {
         return repository.update(id, greeting);
     }
+    @DeleteMapping("/{id}")
+    public String deleteGreeting(@PathVariable Long id) {
+        repository.delete(id);
+        return "Greeting deleted successfully";
+    }
 }

@@ -27,4 +27,7 @@ public class GreetingRepository {
         repo.put(id, greeting);
         return greeting;
     }
+    public void delete(Long id) {
+        repo.remove(id);
+    }
 }
