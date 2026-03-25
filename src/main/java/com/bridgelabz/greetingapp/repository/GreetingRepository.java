@@ -19,4 +19,7 @@ public class GreetingRepository {
     public Greeting findById(Long id) {
         return repo.get(id);
     }
+    public List<Greeting> findAll() {
+        return new ArrayList<>(repo.values());
+    }
 }
