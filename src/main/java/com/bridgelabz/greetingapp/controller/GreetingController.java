@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bridgelabz.greetingapp.repository.GreetingRepository;
 import com.bridgelabz.greetingapp.model.Greeting;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 
@@ -54,5 +55,9 @@ public class GreetingController {
     @PostMapping("/save")
     public Greeting saveGreeting(@RequestBody Greeting greeting) {
         return repository.save(greeting);
+    }
+    @GetMapping("/{id}")
+    public Greeting getGreetingById(@PathVariable Long id) {
+        return repository.findById(id);
     }
 }

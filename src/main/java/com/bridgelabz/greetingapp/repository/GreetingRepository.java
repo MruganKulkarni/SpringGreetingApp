@@ -16,4 +16,7 @@ public class GreetingRepository {
         repo.put(greeting.getId(), greeting);
         return greeting;
     }
+    public Greeting findById(Long id) {
+        return repo.get(id);
+    }
 }
