@@ -3,6 +3,7 @@ package com.bridgelabz.greetingapp.controller;
 import org.springframework.web.bind.annotation.*;
 import com.bridgelabz.greetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -36,5 +37,13 @@ public class GreetingController {
     @GetMapping("/service")
     public String getGreetingFromService() {
         return greetingService.getSimpleGreeting();
+    }
+
+    @GetMapping("/custom")
+    public String customGreeting(
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName) {
+
+        return greetingService.getGreeting(firstName, lastName);
     }
 }
