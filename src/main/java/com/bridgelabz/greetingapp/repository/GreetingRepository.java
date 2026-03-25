@@ -22,4 +22,9 @@ public class GreetingRepository {
     public List<Greeting> findAll() {
         return new ArrayList<>(repo.values());
     }
+    public Greeting update(Long id, Greeting greeting) {
+        greeting.setId(id);
+        repo.put(id, greeting);
+        return greeting;
+    }
 }

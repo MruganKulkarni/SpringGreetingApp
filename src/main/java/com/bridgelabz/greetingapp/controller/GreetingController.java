@@ -65,4 +65,9 @@ public class GreetingController {
     public List<Greeting> getAllGreetings() {
         return repository.findAll();
     }
+    @PutMapping("/{id}")
+    public Greeting updateGreeting(@PathVariable Long id,
+                                   @RequestBody Greeting greeting) {
+        return repository.update(id, greeting);
+    }
 }
