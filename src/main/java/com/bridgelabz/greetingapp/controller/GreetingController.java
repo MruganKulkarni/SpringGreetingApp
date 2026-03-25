@@ -1,10 +1,17 @@
 package com.bridgelabz.greetingapp.controller;
 
 import org.springframework.web.bind.annotation.*;
+import com.bridgelabz.greetingapp.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
+
+    @Autowired
+    private GreetingService greetingService;
 
     @GetMapping
     public String getGreeting() {
@@ -24,5 +31,10 @@ public class GreetingController {
     @DeleteMapping
     public String deleteGreeting() {
         return "Hello from DELETE";
+    }
+
+    @GetMapping("/service")
+    public String getGreetingFromService() {
+        return greetingService.getSimpleGreeting();
     }
 }
